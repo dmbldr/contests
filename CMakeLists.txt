@@ -8,5 +8,5 @@ add_executable(contests
 #        sortme/tyanochka.cpp
 #    sortme/infinity-backpack.cpp
 #    sortme/sum-a-b.cpp
-    sortme/defuse-bomb.cpp
+    yandex/B2_D-benches-in-the-atrium.cpp
         )
