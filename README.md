@@ -68,9 +68,46 @@ void visit(Node* cur)
 
 Пространственная сложность: O(N) - в худшем случае, если дерево несбалансированное и все вершины на одной "ветке", то в run-time стэке будет лежать все вершины. Для сбалансированного в среднем O(logN).
 
+#### Итеративные DFS для бинарного дерева
 
+#### Итеративные BFS для бинарного дерева
 
-#### Итеративные DFS и BFS для дерева
+```c++
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = nullptr;
+    }
+};
+
+void bintree_bfs(Node* root)
+{
+    queue<Node*> q;
+	q.push(root);
+	while(!q.empty())
+    {
+        auto v = q.front();
+        q.pop();
+        
+        cout << v->data;
+        
+        if(v->left != nullptr)
+        {
+            q.push(v->left);
+        }
+        if(v->right != nullptr)
+        {
+            q.push(v->right);
+        }
+    }
+}
+
+```
 
 
 
