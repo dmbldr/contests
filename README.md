@@ -43,21 +43,25 @@ int binary_search(vector<int>& nums, int target)
 #### Рекурсивный DFS для бинарного дерева 
 
 ```c++
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
 void visit(Node* cur)
 {
+    if(!cur) return;
+    
     // preorder (обработка вершины)
     
-    if(cur->left != nullptr)
-    {
-        visit(cur->left);
-    }
+    visit(cur->left);
     
     // inorder (обработка вершины)
+
+    visit(cur->right);
     
-    if(cur->right != nullptr)
-    {
-        visit(cur->right)
-    }
     // postorder (обработка вершины)
 }
 ```
@@ -70,21 +74,35 @@ void visit(Node* cur)
 
 #### Итеративные DFS для бинарного дерева
 
+```c++
+void bintree_dfs(Node* root)
+{
+    stack<Node*> s;
+	s.push(root);
+	while(!s.empty())
+    {
+        auto v = s.top();
+        s.pop();
+        
+        cout << v->data;
+        
+        if(v->left)
+        {
+            s.push(v->left);
+        }
+        if(v->right)
+        {
+            s.push(v->right);
+        }
+    }
+}
+```
+
+
+
 #### Итеративные BFS для бинарного дерева
 
 ```c++
-struct Node
-{
-    int data;
-    struct Node* left;
-    struct Node* right;
-    
-    Node(int x){
-        data = x;
-        left = right = nullptr;
-    }
-};
-
 void bintree_bfs(Node* root)
 {
     queue<Node*> q;
@@ -96,17 +114,16 @@ void bintree_bfs(Node* root)
         
         cout << v->data;
         
-        if(v->left != nullptr)
+        if(v->left)
         {
             q.push(v->left);
         }
-        if(v->right != nullptr)
+        if(v->right)
         {
             q.push(v->right);
         }
     }
 }
-
 ```
 
 
