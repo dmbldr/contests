@@ -8,11 +8,6 @@ public:
     
     void permutation(vector<string>& result, string& s, int k)
     {
-        if(k == s.size()) 
-        {
-            result.push_back(s);
-            return;
-        }
         while(k < s.size() && '0' <= s[k] && s[k] <= '9') 
         {
             ++k;
